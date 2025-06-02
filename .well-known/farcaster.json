@@ -2,11 +2,11 @@
   "frame": {
     "version": "1",
     "name": "Guess the Number",
-    "iconUrl": "https://raw.githubusercontent.com/Rakhikumari2536/guess-number/main/mini%20game%201-3/assets/icon.png",
-    "homeUrl": "https://guess-number-gray.vercel.app",
-    "imageUrl": "https://raw.githubusercontent.com/Rakhikumari2536/guess-number/main/mini%20game%201-3/assets/icon.png",
+    "iconUrl": "https://guess-number-nu-flame.vercel.app/assets/icon.png",
+    "homeUrl": "https://guess-number-nu-flame.vercel.app",
+    "imageUrl": "https://guess-number-nu-flame.vercel.app/assets/icon.png",
     "buttonTitle": "Play Now",
-    "splashImageUrl": "https://raw.githubusercontent.com/Rakhikumari2536/guess-number/main/mini%20game%201-3/assets/icon.png",
+    "splashImageUrl": "https://guess-number-nu-flame.vercel.app/assets/icon.png",
     "splashBackgroundColor": "#ffffff",
     "requiredChains": [
       "eip155:1"
