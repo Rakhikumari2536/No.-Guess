@@ -113,8 +113,6 @@
 <body>
     <div class="container">
         <h1>Guess the Number</h1>
-        <!-- Correct image path used for splash image -->
-        <img src="https://guess-number-sooty-delta.vercel.app/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png" alt="Game Image" style="width: 200px; height: auto;">
         <p>Guess the number between 1 and 3!</p>
         <div class="buttons">
             <button id="button1">1</button>
@@ -127,10 +125,11 @@
 
     <!-- Include Farcaster SDK -->
     <script type="module">
-        import { sdk } from "@farcaster/frame-sdk";
+        // You can comment out this import for testing if SDK is causing issues.
+        // import { sdk } from "@farcaster/frame-sdk";
 
-        // Notify Farcaster that the mini app is ready
-        sdk.actions.ready();
+        // Notify Farcaster that the mini app is ready (You can comment this for testing purposes)
+        // sdk.actions.ready();
 
         // List of winning messages
         const winMessages = [
@@ -183,7 +182,9 @@
             "Outstanding! You guessed the number correctly! 🏅",
             "You're on fire! 🔥 You guessed it correctly!",
             "You’re a true genius! Well done! 💡",
-            "You did it! Right on target! 🎯"
+            "You did it! Right on target! 🎯",
+            "You guessed it like a champion! 🎯",
+            "Spot on! The number was exactly right! 🏅"
         ];
 
         // List of losing messages
@@ -242,24 +243,26 @@
         const playAgainButton = document.getElementById("playAgain");
         const buttonContainer = document.querySelector(".buttons");
 
-        buttons.forEach(button => {
-            button.addEventListener("click", function() {
-                const guess = parseInt(button.innerText);
-                if (guess === number) {
-                    resultParagraph.innerHTML = randomChoice(winMessages);
-                } else {
-                    resultParagraph.innerHTML = randomChoice(loseMessages).replace("{0}", number);
-                }
-                buttonContainer.style.display = "none";  // Hide the buttons
-                playAgainButton.style.display = "inline-block";  // Show the play again button
+        document.addEventListener("DOMContentLoaded", function() {
+            buttons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const guess = parseInt(button.innerText);
+                    if (guess === number) {
+                        resultParagraph.innerHTML = randomChoice(winMessages);
+                    } else {
+                        resultParagraph.innerHTML = randomChoice(loseMessages).replace("{0}", number);
+                    }
+                    buttonContainer.style.display = "none";  // Hide the buttons
+                    playAgainButton.style.display = "inline-block";  // Show the play again button
+                });
             });
-        });
 
-        playAgainButton.addEventListener("click", function() {
-            number = Math.floor(Math.random() * 3) + 1;  // Generate a new number
-            resultParagraph.innerHTML = "";
-            buttonContainer.style.display = "block";  // Show the buttons again
-            playAgainButton.style.display = "none";  // Hide the play again button
+            playAgainButton.addEventListener("click", function() {
+                number = Math.floor(Math.random() * 3) + 1;  // Generate a new number
+                resultParagraph.innerHTML = "";
+                buttonContainer.style.display = "block";  // Show the buttons again
+                playAgainButton.style.display = "none";  // Hide the play again button
+            });
         });
 
         function randomChoice(array) {
