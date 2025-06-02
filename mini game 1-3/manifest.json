@@ -2,9 +2,9 @@
   "name": "Guess the Number",
   "short_description": "A simple number guessing game",
   "description": "Guess the number between 1 and 3 and get a random response! Test your intuition.",
-  "url": "https://guess-number-six-chi.vercel.app", 
-  "icon": "https://guess-number-six-chi.vercel.app/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
-  "splash_image": "https://guess-number-six-chi.vercel.app/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
+  "url": "https://guess-number-sooty-delta.vercel.app", 
+  "icon": "https://guess-number-sooty-delta.vercel.app/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
+  "splash_image": "https://guess-number-sooty-delta.vercel.app/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
   "sdk_version": "1",
   "entry": "index.html"
 }
