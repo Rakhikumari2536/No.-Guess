@@ -123,7 +123,13 @@
         <button id="playAgain">Play Again</button>
     </div>
 
-    <script>
+    <!-- Include Farcaster SDK -->
+    <script type="module">
+        import { sdk } from "@farcaster/frame-sdk";
+
+        // Notify Farcaster that the mini app is ready
+        sdk.actions.ready();
+
         // List of winning messages
         const winMessages = [
             "Wow! You guessed it! 🎉 You're a genius!",
@@ -177,7 +183,7 @@
             "You’re a true genius! Well done! 💡",
             "You did it! Right on target! 🎯"
         ];
-        
+
         // List of losing messages
         const loseMessages = [
             "Oops! You lost. The number was {0}. Better luck next time, Einstein! 😜",
