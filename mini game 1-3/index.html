@@ -126,11 +126,11 @@
     <!-- Include Farcaster SDK -->
     <script type="module">
         document.addEventListener("DOMContentLoaded", async function() {
-            // Load the SDK and check if it’s ready
             try {
+                // Import the SDK only after everything is loaded
                 const { sdk } = await import('@farcaster/frame-sdk');
                 
-                // Signal Farcaster that the app is ready
+                // Notify Farcaster that the mini app is ready
                 sdk.actions.ready();
 
                 // List of winning messages
