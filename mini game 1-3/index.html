@@ -125,147 +125,151 @@
 
     <!-- Include Farcaster SDK -->
     <script type="module">
-        document.addEventListener("DOMContentLoaded", function() {
-            // You can comment out this import for testing if SDK is causing issues.
-            import { sdk } from "@farcaster/frame-sdk";
+        document.addEventListener("DOMContentLoaded", async function() {
+            // Load the SDK and check if it’s ready
+            try {
+                const { sdk } = await import('@farcaster/frame-sdk');
+                
+                // Signal Farcaster that the app is ready
+                sdk.actions.ready();
 
-            // Notify Farcaster that the mini app is ready (You can comment this for testing purposes)
-            sdk.actions.ready();
+                // List of winning messages
+                const winMessages = [
+                    "Wow! You guessed it! 🎉 You're a genius!",
+                    "You nailed it! 🏆 The number was correct!",
+                    "Amazing! You guessed it right! 🤩",
+                    "You're on fire! 🔥 You got it right!",
+                    "Congratulations! 🎉 You've won! 🎉",
+                    "Brilliant! You guessed it! 👏",
+                    "You did it! 🎯 The number was correct!",
+                    "Superb! You're the guessing master! 💥",
+                    "Spot on! 🎯 You’re amazing!",
+                    "Perfect guess! 🏅 You're a pro!",
+                    "You got it! 🎉 You’re a champion!",
+                    "Bingo! 🎯 You're a winner!",
+                    "Fantastic! You guessed it right! 🤩",
+                    "Well done! The number was correct! 🎉",
+                    "What a guess! 🎉 You're amazing!",
+                    "Awesome job! You nailed it! 🎯",
+                    "Right on the money! 🏆 You guessed it!",
+                    "Excellent! You guessed the right number! 👏",
+                    "You've got great intuition! 👏 The number was right!",
+                    "No doubt about it! You got it right! 🎉",
+                    "You did it! The number was right! 🏅",
+                    "Incredible! You guessed it on the first try! 🏆",
+                    "Perfect! You guessed it right! 🎯",
+                    "You got it! Your guess was spot on! 🎉",
+                    "Amazing! You guessed it correctly, you're a pro! 💥",
+                    "Unbelievable! You guessed it right! 🤩",
+                    "You're a wizard! You nailed it! 🎩",
+                    "You’re unstoppable! You guessed it right! 💥",
+                    "Wow, you're brilliant! You guessed it right! 💡",
+                    "You're a fortune teller! You got it! 🔮",
+                    "Bravo! You guessed it correctly! 🏆",
+                    "You’re a mastermind! 🧠 You guessed it!",
+                    "You crushed it! Your guess was right! 💪",
+                    "You're amazing! You nailed it! 🎯",
+                    "Unreal! You got it right! 🎉",
+                    "You guessed it like a pro! Well done! 👏",
+                    "Your intuition is spot on! You got it! 🎯",
+                    "Perfect choice! You guessed the right number! 🎉",
+                    "You did it! Congrats on your perfect guess! 🏅",
+                    "You got it right! That's amazing! 🎉",
+                    "Well played! You guessed the number correctly! 🎯",
+                    "You are a genius! 🎉 You guessed it! 👏",
+                    "Top notch! You guessed it! 🏆",
+                    "You got it first try! You're amazing! 🎉",
+                    "You're a star! 🌟 You guessed it right!",
+                    "Your guess was perfect! 🎯 Congratulations!",
+                    "Outstanding! You guessed the number correctly! 🏅",
+                    "You're on fire! 🔥 You guessed it correctly!",
+                    "You’re a true genius! Well done! 💡",
+                    "You did it! Right on target! 🎯",
+                    "You guessed it like a champion! 🎯",
+                    "Spot on! The number was exactly right! 🏅"
+                ];
 
-            // List of winning messages
-            const winMessages = [
-                "Wow! You guessed it! 🎉 You're a genius!",
-                "You nailed it! 🏆 The number was correct!",
-                "Amazing! You guessed it right! 🤩",
-                "You're on fire! 🔥 You got it right!",
-                "Congratulations! 🎉 You've won! 🎉",
-                "Brilliant! You guessed it! 👏",
-                "You did it! 🎯 The number was correct!",
-                "Superb! You're the guessing master! 💥",
-                "Spot on! 🎯 You’re amazing!",
-                "Perfect guess! 🏅 You're a pro!",
-                "You got it! 🎉 You’re a champion!",
-                "Bingo! 🎯 You're a winner!",
-                "Fantastic! You guessed it right! 🤩",
-                "Well done! The number was correct! 🎉",
-                "What a guess! 🎉 You're amazing!",
-                "Awesome job! You nailed it! 🎯",
-                "Right on the money! 🏆 You guessed it!",
-                "Excellent! You guessed the right number! 👏",
-                "You've got great intuition! 👏 The number was right!",
-                "No doubt about it! You got it right! 🎉",
-                "You did it! The number was right! 🏅",
-                "Incredible! You guessed it on the first try! 🏆",
-                "Perfect! You guessed it right! 🎯",
-                "You got it! Your guess was spot on! 🎉",
-                "Amazing! You guessed it correctly, you're a pro! 💥",
-                "Unbelievable! You guessed it right! 🤩",
-                "You're a wizard! You nailed it! 🎩",
-                "You’re unstoppable! You guessed it right! 💥",
-                "Wow, you're brilliant! You guessed it right! 💡",
-                "You're a fortune teller! You got it! 🔮",
-                "Bravo! You guessed it correctly! 🏆",
-                "You’re a mastermind! 🧠 You guessed it!",
-                "You crushed it! Your guess was right! 💪",
-                "You're amazing! You nailed it! 🎯",
-                "Unreal! You got it right! 🎉",
-                "You guessed it like a pro! Well done! 👏",
-                "Your intuition is spot on! You got it! 🎯",
-                "Perfect choice! You guessed the right number! 🎉",
-                "You did it! Congrats on your perfect guess! 🏅",
-                "You got it right! That's amazing! 🎉",
-                "Well played! You guessed the number correctly! 🎯",
-                "You are a genius! 🎉 You guessed it! 👏",
-                "Top notch! You guessed it! 🏆",
-                "You got it first try! You're amazing! 🎉",
-                "You're a star! 🌟 You guessed it right!",
-                "Your guess was perfect! 🎯 Congratulations!",
-                "Outstanding! You guessed the number correctly! 🏅",
-                "You're on fire! 🔥 You guessed it correctly!",
-                "You’re a true genius! Well done! 💡",
-                "You did it! Right on target! 🎯",
-                "You guessed it like a champion! 🎯",
-                "Spot on! The number was exactly right! 🏅"
-            ];
+                // List of losing messages
+                const loseMessages = [
+                    "Oops! You lost. The number was {0}. Better luck next time, Einstein! 😜",
+                    "Not quite right! The number was {0}. Try again next time! 🤭",
+                    "So close! The number was {0}. Don't worry, you'll get it next time! 💡",
+                    "Oops! Wrong guess. The number was {0}. Better luck next time! 😅",
+                    "Ahh, you missed it! The number was {0}. No worries, try again! 😆",
+                    "That’s not it! The number was {0}. Keep going, you'll get it! 😜",
+                    "Almost! The number was {0}. It’s just not your day! 😂",
+                    "Oh no, you lost! The number was {0}. Next time you'll win! 😎",
+                    "Nope! The number was {0}. Keep trying! 🏅",
+                    "Well, you lost! The number was {0}. Keep practicing, champ! 🤗",
+                    "You missed it! The number was {0}. Next time, you'll get it! 🤞",
+                    "Wrong guess! The number was {0}. Better luck next time! 😜",
+                    "Close, but not quite! The number was {0}. Try again! 😅",
+                    "You were so close! The number was {0}. Don't give up! 💪",
+                    "Nope, not this time! The number was {0}. Maybe next time! 😉",
+                    "You missed it this time! The number was {0}. Try again next time! 🤭",
+                    "Nice try! But the number was {0}. Keep going! 😎",
+                    "Oh well, the number was {0}. Better luck next time! 😁",
+                    "You didn’t get it this time. The number was {0}. You’ll get it next time! 😆",
+                    "Not today, but the number was {0}. Keep guessing! 🎯",
+                    "Wrong again! The number was {0}. You'll get it next time! 🤔",
+                    "Oops! The number was {0}. Better luck next time, pal! 😜",
+                    "Almost had it! The number was {0}. Don’t worry, try again! 💡",
+                    "You guessed wrong! The number was {0}. But nice effort! 👏",
+                    "Oops, you lost! The number was {0}. Try again soon! 😅",
+                    "Wrong guess! The number was {0}. Don't worry, you'll get it! 😏",
+                    "Well, the number was {0}. Better luck next time! 🏅",
+                    "Oh no! The number was {0}. No worries, try again! 😁",
+                    "Missed it! The number was {0}. But you'll get it next time! 😆",
+                    "You’re getting closer! The number was {0}. Try again! 🤩",
+                    "Almost there! The number was {0}. Don’t give up! 😜",
+                    "Not today! The number was {0}. Better luck next time! 😂",
+                    "Oops! You didn’t get it! The number was {0}. Try again later! 🤭",
+                    "So close! The number was {0}. You’ll get it next time! 😆",
+                    "You missed it by a hair! The number was {0}. Try again! 🧠",
+                    "Close enough! The number was {0}. You’ll get it next time! 😎",
+                    "That was a good guess! But the number was {0}. Try again! 🤗",
+                    "Nope! The number was {0}. Keep practicing! 💪",
+                    "You didn’t guess it! The number was {0}. Better luck next time! 😜",
+                    "You didn’t get it! The number was {0}. Don’t give up! 😏",
+                    "So close, but no cigar! The number was {0}. Better luck next time! 🏅",
+                    "Wrong! The number was {0}. But keep trying, you’ll get it! 🎯",
+                    "Missed it! The number was {0}. Keep going, you’ll get it soon! 😆",
+                    "Try again! The number was {0}. Don’t worry, you’ll guess it next time! 🤭",
+                    "Nice try! The number was {0}. You’ll get it next time! 💡"
+                ];
 
-            // List of losing messages
-            const loseMessages = [
-                "Oops! You lost. The number was {0}. Better luck next time, Einstein! 😜",
-                "Not quite right! The number was {0}. Try again next time! 🤭",
-                "So close! The number was {0}. Don't worry, you'll get it next time! 💡",
-                "Oops! Wrong guess. The number was {0}. Better luck next time! 😅",
-                "Ahh, you missed it! The number was {0}. No worries, try again! 😆",
-                "That’s not it! The number was {0}. Keep going, you'll get it! 😜",
-                "Almost! The number was {0}. It’s just not your day! 😂",
-                "Oh no, you lost! The number was {0}. Next time you'll win! 😎",
-                "Nope! The number was {0}. Keep trying! 🏅",
-                "Well, you lost! The number was {0}. Keep practicing, champ! 🤗",
-                "You missed it! The number was {0}. Next time, you'll get it! 🤞",
-                "Wrong guess! The number was {0}. Better luck next time! 😜",
-                "Close, but not quite! The number was {0}. Try again! 😅",
-                "You were so close! The number was {0}. Don't give up! 💪",
-                "Nope, not this time! The number was {0}. Maybe next time! 😉",
-                "You missed it this time! The number was {0}. Try again next time! 🤭",
-                "Nice try! But the number was {0}. Keep going! 😎",
-                "Oh well, the number was {0}. Better luck next time! 😁",
-                "You didn’t get it this time. The number was {0}. You’ll get it next time! 😆",
-                "Not today, but the number was {0}. Keep guessing! 🎯",
-                "Wrong again! The number was {0}. You'll get it next time! 🤔",
-                "Oops! The number was {0}. Better luck next time, pal! 😜",
-                "Almost had it! The number was {0}. Don’t worry, try again! 💡",
-                "You guessed wrong! The number was {0}. But nice effort! 👏",
-                "Oops, you lost! The number was {0}. Try again soon! 😅",
-                "Wrong guess! The number was {0}. Don't worry, you'll get it! 😏",
-                "Well, the number was {0}. Better luck next time! 🏅",
-                "Oh no! The number was {0}. No worries, try again! 😁",
-                "Missed it! The number was {0}. But you'll get it next time! 😆",
-                "You’re getting closer! The number was {0}. Try again! 🤩",
-                "Almost there! The number was {0}. Don’t give up! 😜",
-                "Not today! The number was {0}. Better luck next time! 😂",
-                "Oops! You didn’t get it! The number was {0}. Try again later! 🤭",
-                "So close! The number was {0}. You’ll get it next time! 😆",
-                "You missed it by a hair! The number was {0}. Try again! 🧠",
-                "Close enough! The number was {0}. You’ll get it next time! 😎",
-                "That was a good guess! But the number was {0}. Try again! 🤗",
-                "Nope! The number was {0}. Keep practicing! 💪",
-                "You didn’t guess it! The number was {0}. Better luck next time! 😜",
-                "You didn’t get it! The number was {0}. Don’t give up! 😏",
-                "So close, but no cigar! The number was {0}. Better luck next time! 🏅",
-                "Wrong! The number was {0}. But keep trying, you’ll get it! 🎯",
-                "Missed it! The number was {0}. Keep going, you’ll get it soon! 😆",
-                "Try again! The number was {0}. Don’t worry, you’ll guess it next time! 🤭",
-                "Nice try! The number was {0}. You’ll get it next time! 💡"
-            ];
+                let number = Math.floor(Math.random() * 3) + 1;
 
-            let number = Math.floor(Math.random() * 3) + 1;
+                const buttons = document.querySelectorAll(".buttons button");
+                const resultParagraph = document.getElementById("result");
+                const playAgainButton = document.getElementById("playAgain");
+                const buttonContainer = document.querySelector(".buttons");
 
-            const buttons = document.querySelectorAll(".buttons button");
-            const resultParagraph = document.getElementById("result");
-            const playAgainButton = document.getElementById("playAgain");
-            const buttonContainer = document.querySelector(".buttons");
-
-            buttons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const guess = parseInt(button.innerText);
-                    if (guess === number) {
-                        resultParagraph.innerHTML = randomChoice(winMessages);
-                    } else {
-                        resultParagraph.innerHTML = randomChoice(loseMessages).replace("{0}", number);
-                    }
-                    buttonContainer.style.display = "none";  // Hide the buttons
-                    playAgainButton.style.display = "inline-block";  // Show the play again button
+                buttons.forEach(button => {
+                    button.addEventListener("click", function() {
+                        const guess = parseInt(button.innerText);
+                        if (guess === number) {
+                            resultParagraph.innerHTML = randomChoice(winMessages);
+                        } else {
+                            resultParagraph.innerHTML = randomChoice(loseMessages).replace("{0}", number);
+                        }
+                        buttonContainer.style.display = "none";  // Hide the buttons
+                        playAgainButton.style.display = "inline-block";  // Show the play again button
+                    });
                 });
-            });
 
-            playAgainButton.addEventListener("click", function() {
-                number = Math.floor(Math.random() * 3) + 1;  // Generate a new number
-                resultParagraph.innerHTML = "";
-                buttonContainer.style.display = "block";  // Show the buttons again
-                playAgainButton.style.display = "none";  // Hide the play again button
-            });
+                playAgainButton.addEventListener("click", function() {
+                    number = Math.floor(Math.random() * 3) + 1;  // Generate a new number
+                    resultParagraph.innerHTML = "";
+                    buttonContainer.style.display = "block";  // Show the buttons again
+                    playAgainButton.style.display = "none";  // Hide the play again button
+                });
 
-            function randomChoice(array) {
-                return array[Math.floor(Math.random() * array.length)];
+                function randomChoice(array) {
+                    return array[Math.floor(Math.random() * array.length)];
+                }
+            } catch (error) {
+                console.error("Error loading SDK:", error);
             }
         });
     </script>
