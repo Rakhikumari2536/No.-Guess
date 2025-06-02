@@ -2,13 +2,14 @@
   "frame": {
     "version": "1",
     "name": "Guess the Number",
-    "iconUrl": "https://github.com/Rakhikumari2536/No-Guess/raw/main/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
-    "homeUrl": "https://no-guess.vercel.app",
-    "imageUrl": "https://github.com/Rakhikumari2536/No-Guess/raw/main/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
+    "iconUrl": "https://github.com/Rakhikumari2536/guess-number/raw/main/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
+    "homeUrl": "https://guess-number.vercel.app",
+    "imageUrl": "https://github.com/Rakhikumari2536/guess-number/raw/main/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
     "buttonTitle": "Play Now",
-    "splashImageUrl": "https://github.com/Rakhikumari2536/No-Guess/raw/main/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
-    "splashBackgroundColor": "#4CAF50",
-    "requiredChains": [],
-    "requiredCapabilities": []
+    "splashImageUrl": "https://github.com/Rakhikumari2536/guess-number/raw/main/mini%20game%201-3/6cb597e9-72e4-4d41-b4de-459863bc90f9.png",
+    "splashBackgroundColor": "#6a11cb",
+    "requiredChains": [
+      "eip155:1"
+    ]
   }
 }
