@@ -1,19 +1,18 @@
 {
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE4NjI0LCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4YTc1RmI2YUVEOUMwNkRkZkFmYzQ0QTc4YWU0RDE4NTM2ZGZiN0RlNCJ9",
+    "payload": "eyJkb21haW4iOiJndWVzcy1udW1iZXItbnUtZmxhbWUudmVyY2VsLmFwcCJ9",
+    "signature": "MHhiZGJiMTA2ZTMyMDUxNTI4YTNiMjNiZDc0ODI3OTc4ODZlYTY1ZmNlMDlkMWVkNDE0OTI1OGY5ZWJkNDhlNGQwNDVkMDAwOTgwYWJhNjM5YTJkMGMwOWU5YzhlMTM5ZWYxNzBhYWZlZTJjNTE4ZGU5YWM5ZDZhNmQ4Yjc0YjlkODFi"
+  },
   "frame": {
     "version": "1",
     "name": "Guess the Number",
-    "iconUrl": "https://guess-number-nu-flame.vercel.app/assets/icon.png",
+    "iconUrl": "https://guess-number-nu-flame.vercel.app/icon.png",
     "homeUrl": "https://guess-number-nu-flame.vercel.app",
-    "imageUrl": "https://guess-number-nu-flame.vercel.app/assets/icon.png",
-    "buttonTitle": "Play Now",
-    "splashImageUrl": "https://guess-number-nu-flame.vercel.app/assets/icon.png",
-    "splashBackgroundColor": "#ffffff",
-    "requiredChains": [
-      "eip155:1"
-    ],
-    "requiredCapabilities": [
-      "actions.signIn",
-      "wallet.getEthereumProvider"
-    ]
+    "imageUrl": "https://guess-number-nu-flame.vercel.app/image.png",
+    "buttonTitle": "Guess Now",
+    "splashImageUrl": "https://guess-number-nu-flame.vercel.app/splash.png",
+    "splashBackgroundColor": "#eeccff",
+    "webhookUrl": "https://guess-number-nu-flame.vercel.app/api/webhook"
   }
 }
